@@ -1,3 +1,3 @@
 module.exports = {
-    socket_host: 'http://www.hat-chat.loc:4000'
+    socket_host: 'http://46.101.250.59/c:4000'
 };
