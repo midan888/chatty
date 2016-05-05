@@ -7,7 +7,6 @@ import {Router, browserHistory} from 'react-router';
 import reducers from './reducers';
 import routes from './routes';
 import socketClient from './services/socket/client';
-import { AUTH_TOKEN_KEY } from './constants/app';
 import reduxPromis from 'redux-promise';
 import { newMessage } from './actions/chat_actions';
 import { appOffline, appOnline } from './actions/app_actions';

@@ -24,6 +24,8 @@ export default function (state = INITIAL_STATE, action){
 
         case JOIN_ROOM:
 
+          console.log('JOIN ROOM');
+
             if (action.payload.status == 'ROOM_NOT_FOUND') {
                 return Object.assign({}, state, {roomNotFound: true});
             }
@@ -32,7 +34,7 @@ export default function (state = INITIAL_STATE, action){
             messages.reverse();
 
             return Object.assign({}, state, {
-                messages: messages,
+                messages: [...messages],
                 roomId: action.payload.roomId,
                 roomName: action.payload.room.name,
                 joined: true

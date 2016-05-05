@@ -25,7 +25,7 @@ class ChatPage extends BaseComponent {
         this.promptDeleteRoom = this.promptDeleteRoom.bind(this);
 
         this.state = {
-            isJoining: false,
+            isJoining: false
         };
     }
 
@@ -40,8 +40,6 @@ class ChatPage extends BaseComponent {
 
     componentWillMount() {
         this.joinRoom();
-
-        this.setState({showDeleteModal:true})
     }
 
     deleteRoom() {
@@ -73,7 +71,6 @@ class ChatPage extends BaseComponent {
         }
 
         if (!this.props.chat.joined) {
-            this.joinRoom();
             return (
                 <Loader />
             )
