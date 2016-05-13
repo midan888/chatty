@@ -8,7 +8,7 @@ import reducers from './reducers';
 import routes from './routes';
 import socketClient from './services/socket/client';
 import reduxPromis from 'redux-promise';
-import { newMessage } from './actions/chat_actions';
+import { newMessage, userJoinedRoom, userLeftRoom } from './actions/chat_actions';
 import { appOffline, appOnline } from './actions/app_actions';
 
 const createStoreWithMiddleware = applyMiddleware(reduxPromis)(createStore);
@@ -22,8 +22,20 @@ ReactDOM.render(
     </Provider>, document.getElementById('app')
 );
 
+
+/**
+ * Global events rigister
+ */
 socketConnection.on('messages/newMessage', function(data){
     store.dispatch(newMessage(data));
+});
+
+socketConnection.on('room/userJoined', function(data){
+    store.dispatch(userJoinedRoom(data));
+});
+
+socketConnection.on('room/userLeft', function(data){
+    store.dispatch(userLeftRoom(data));
 });
 
 socketClient.disconnected = function(){
@@ -33,4 +45,3 @@ socketClient.disconnected = function(){
 socketClient.connected = function(){
     store.dispatch(appOnline());
 };
-//UserActionCreator.getProfile();

@@ -6,6 +6,8 @@ export const NEW_MESSAGE = 'NEW_MESSAGE';
 export const USER_TYPING = 'USER_TYPING';
 export const SOME_USER_TYPING = 'SOME_USER_TYPING';
 export const CLEAR_USER_TYPING = 'CLEAR_USER_TYPING';
+export const USER_JOINED_ROOM = 'USER_JOINED_ROOM';
+export const USER_LEFT_ROOM = 'USER_LEFT_ROOM';
 
 export function createMessage(roomId, message) {
 
@@ -65,5 +67,21 @@ export function clearUserTypings() {
 
     return {
         type: CLEAR_USER_TYPING
+    }
+}
+
+export function userJoinedRoom(payload) {
+
+    return {
+        type: USER_JOINED_ROOM,
+        payload: payload
+    }
+}
+
+export function userLeftRoom(payload) {
+
+    return {
+        type: USER_LEFT_ROOM,
+        payload:payload
     }
 }

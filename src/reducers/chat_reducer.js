@@ -4,6 +4,8 @@ import {
     NEW_MESSAGE,
     SOME_USER_TYPING,
     CLEAR_USER_TYPING,
+    USER_JOINED_ROOM,
+    USER_LEFT_ROOM
 } from '../actions/chat_actions';
 
 const INITIAL_STATE = {
@@ -13,7 +15,8 @@ const INITIAL_STATE = {
     roomName: null,
     roomNotFound:false,
     joined: false,
-    typingUserList: []
+    typingUserList: [],
+    onlineUsers:[]
 };
 
 export default function (state = INITIAL_STATE, action){
@@ -22,9 +25,10 @@ export default function (state = INITIAL_STATE, action){
 
     switch (action.type) {
 
+    /**
+     * User is joining room
+     */
         case JOIN_ROOM:
-
-          console.log('JOIN ROOM');
 
             if (action.payload.status == 'ROOM_NOT_FOUND') {
                 return Object.assign({}, state, {roomNotFound: true});
@@ -37,9 +41,13 @@ export default function (state = INITIAL_STATE, action){
                 messages: [...messages],
                 roomId: action.payload.roomId,
                 roomName: action.payload.room.name,
-                joined: true
+                joined: true,
+                onlineUsers: action.payload.onlineUsers
             });
 
+    /**
+     * In case user creates message or someone else creates message
+     */
         case CREATE_MESSAGE:
         case NEW_MESSAGE:
 
@@ -48,10 +56,13 @@ export default function (state = INITIAL_STATE, action){
 
             return Object.assign({}, state, {messages: messages});
 
+    /**
+     * If someone is typing
+     */
         case SOME_USER_TYPING:
 
-            var nicknames = state.typingUserList;
-            var typingNickname = action.payload.user.nickname;
+            let nicknames = state.typingUserList;
+            let typingNickname = action.payload.user.nickname;
             let nicknameInList = false;
             nicknames.forEach(function(nickname, i){
                 if (nickname == typingNickname) {
@@ -65,9 +76,35 @@ export default function (state = INITIAL_STATE, action){
 
             return Object.assign({}, state, {typingUserList:nicknames});
 
+    /**
+     * If someone stopped typing
+     */
         case CLEAR_USER_TYPING:
             return Object.assign({}, state, {typingUserList:[]});
 
+    /**
+     * If someone else is joined the chat
+     */
+        case USER_JOINED_ROOM:
+
+            let found = state.onlineUsers.find(function(user){
+                return user.nickname == action.payload.user.nickname
+            });
+
+            if (!found) {
+                return Object.assign({}, state, {onlineUsers:[...state.onlineUsers, action.payload.user]});
+            }
+
+            return state;
+    /**
+     * If someone left the chat
+     */
+        case USER_LEFT_ROOM:
+            let filteredUsers = state.onlineUsers.filter(function(user){
+                return user.nickname != action.payload.user.nickname;
+            });
+
+            return Object.assign({}, state, {onlineUsers:filteredUsers});
         default:
             return state;
     }

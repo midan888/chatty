@@ -14,6 +14,7 @@ import BaseComponent from '../base/base_component';
 import RoomNotFound from './room_not_found';
 import DeleteModal from '../base/delete_modal';
 import Loader from '../base/loader';
+import OnlineUsers from './online_users';
 
 class ChatPage extends BaseComponent {
 
@@ -85,6 +86,9 @@ class ChatPage extends BaseComponent {
                             <div className="col-xs-8">
                                 <h2>Channel: {this.props.chat.roomName}</h2>
                             </div>
+                            <div>
+
+                            </div>
                             <div className="col-xs-4">
                                 <br />
                                 <div class="row">
@@ -103,9 +107,9 @@ class ChatPage extends BaseComponent {
                             </div>
                         </div>
                     </div>
+                    <OnlineUsers users={this.props.chat.onlineUsers}/>
                     <MessageList messages={this.props.chat.messages} />
                     <MessageForm typingUserList={this.props.chat.typingUserList} />
-
                 </div>
             </div>
         );
