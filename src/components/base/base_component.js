@@ -1,8 +1,3 @@
-//require('normalize.css/normalize.css');
-
-require('styles/bootstrap.min.css');
-require('styles/styles.css');
-
 import { Component } from 'react';
 
 class BaseComponent extends Component {

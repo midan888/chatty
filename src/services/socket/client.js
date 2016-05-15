@@ -22,8 +22,8 @@ class SocketClient {
             }
         },400);
 
-        connection.on('online', function (data) {
-            console.log('ONLINE!');
+        connection.on('online', function () {
+            // online
         });
 
         this.connection = connection;
@@ -34,13 +34,12 @@ class SocketClient {
     static emit(event, payload) {
 
         if (!this.connection) {
-            console.log('NOT CONNECTED TO SOCKET!');
             return;
         }
 
         var that = this;
 
-        return new Promise(function(resolve, reject){
+        return new Promise(function(resolve){
 
             if (!payload) {
                 payload = {};

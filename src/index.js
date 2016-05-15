@@ -1,3 +1,7 @@
+//require('styles/bootstrap.min.css');
+require('styles/normalize.css');
+require('styles/app.scss');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
