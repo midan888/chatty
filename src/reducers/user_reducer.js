@@ -14,7 +14,7 @@ export default function (state = INITIAL_STATE, action){
             localStorage.setItem(AUTH_TOKEN_KEY, action.payload.token);
             return Object.assign({}, state, {authToken: action.payload.token, nickname: action.payload.nickname});
         case GET_PROFILE:
-            return Object.assign({}, state, {nickname: action.payload.nickname});
+            return Object.assign({}, state, {nickname: action.payload.user.nickname});
 
         default:
             return state;

@@ -86,19 +86,13 @@ class ChatPage extends BaseComponent {
                             <div className="col-xs-8">
                                 <h2>Channel: {this.props.chat.roomName}</h2>
                             </div>
-                            <div>
-
-                            </div>
                             <div className="col-xs-4">
                                 <br />
                                 <div class="row">
-                                    <div className="col-xs-12">
+                                    <div className="col-sm-6">
                                         <button onClick={this.promptDeleteRoom} className="btn btn-danger btn-xs">Delete channel</button>
                                     </div>
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div className="col-xs-12">
+                                    <div className="col-sm-6">
                                         <Link to="/">
                                             <button className="btn btn-info btn-xs">New channel</button>
                                         </Link>
@@ -108,7 +102,10 @@ class ChatPage extends BaseComponent {
                         </div>
                     </div>
                     <OnlineUsers users={this.props.chat.onlineUsers}/>
-                    <MessageList messages={this.props.chat.messages} />
+                    <div>
+                        <hr />
+                    </div>
+                    <MessageList messages={this.props.chat.messages} cUser={this.props.user} />
                     <MessageForm typingUserList={this.props.chat.typingUserList} />
                 </div>
             </div>

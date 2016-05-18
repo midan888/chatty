@@ -1,0 +1,26 @@
+.chat-page {
+
+}
+
+.message-form-container {
+
+}
+
+.message-list {
+
+}
+
+.message-item-container {
+    margin-bottom: 10px;
+    padding: 5px;
+
+    .text {
+        box-shadow: 2px 2px 5px #bbb;
+        background-color: #F5F5F5;
+        border-radius: 8px;
+        min-height:35px;
+        display: inline-block;
+        padding: 0 10px;
+        min-width: 150px;
+    }
+}

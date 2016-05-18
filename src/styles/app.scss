@@ -1,5 +1,11 @@
 body {
-    background-image: url("../images/home_bg.jpg");
+    //background-image: url("../images/bg1.jpg");
+}
+
+$textColorLight: #EEEEEE;
+
+.text-color-light {
+    color: $textColorLight;
 }
 
 .flex-container {
@@ -7,6 +13,19 @@ body {
     display: flex;
 }
 
-#app {
-
+.btn {
+    border-radius: 0;
 }
+.form-control {
+    border-radius: 0;
+}
+
+.btn-waiting {
+    background-image: url("../images/btn_spin.gif");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+@import 'create_room';
+@import 'chat_page';

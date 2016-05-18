@@ -35,28 +35,29 @@ class MessageForm extends BaseComponent {
 
         return (
 
-            <form className="form-horizontal" onSubmit={handleSubmit(this.submitMessage)} autoComplete="off">
-                <div className="form-group">
-                    <div className="col-xs-10">
-                        <input
-                            type="text"
-                            placeholder="hi!"
-                            className="form-control"
-                            {...message}
-                            onChange={(event) => {
-                                message.onChange(event);
-                                this.props.userTyping(this.props.roomId);
-                            }}
-                        />
+            <div className="message-form-container">
+                <form className="form-horizontal" onSubmit={handleSubmit(this.submitMessage)} autoComplete="off">
+                    <div className="form-group">
+                        <div className="col-xs-10">
+                            <input
+                                type="text"
+                                placeholder="hi!"
+                                className="form-control"
+                                {...message}
+                                onChange={(event) => {
+                                    message.onChange(event);
+                                    this.props.userTyping(this.props.roomId);
+                                }}
+                            />
 
-                        <div>{typingUsers}</div>
+                            <div>{typingUsers}</div>
+                        </div>
+                        <div className="col-xs-2">
+                            <button className={`btn btn-sm btn-success ${message.error ? 'disabled' : ''}`}>Send</button>
+                        </div>
                     </div>
-                    <div className="col-xs-2">
-                        <button className={`btn btn-sm btn-success ${message.error ? 'disabled' : ''}`}>Send</button>
-                    </div>
-                </div>
-
-            </form>
+                </form>
+            </div>
         );
     }
 

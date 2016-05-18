@@ -2,22 +2,18 @@ import React from 'react';
 
 export default function (props) {
 
-  let users = props.users || [];
-  let usersDom = [];
+    let users = props.users || [];
 
-  users.forEach(function(user, i){
-    usersDom.push(
-        <span>
-            <span className="label label-default" key={i}>{user.nickname}</span>
-            <span> | </span>
-        </span>
-    )
-  });
+    let usersString = '';
+    users.forEach(function(user){
+        usersString+=user.nickname + ', ';
+    });
+    usersString = usersString.replace(/, $/, '');
 
-  return (
-    <div>
-        Online users: {usersDom}
-    </div>
-  );
+    return (
+        <div>
+            <p><em>{usersString}</em></p>
+        </div>
+    );
 
 }

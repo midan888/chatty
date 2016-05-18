@@ -7,7 +7,9 @@ class BaseComponent extends React.Component {
         return (
             <div className="container">
                 <ConnectionStatus />
-                {this.props.children}
+                <div>
+                    {this.props.children}
+                </div>
             </div>
         )
     }

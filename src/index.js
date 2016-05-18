@@ -1,5 +1,4 @@
-//require('styles/bootstrap.min.css');
-require('styles/normalize.css');
+require('styles/bootstrap.min.css');
 require('styles/app.scss');
 
 import React from 'react';

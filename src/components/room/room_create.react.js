@@ -23,18 +23,18 @@ class RoomCreatePage extends BaseComponent {
     render(){
 
         const room = this.props.room.data;
-        const hideForm = this.state.hideForm;
-        const showGoToRoomButton = this.state.showGoToRoomButton;
+        const hideForm = room ? true : false;
+        const showGoToRoomButton = room ? true : false;
         const roomChatLink = room ? '/channel/' + room._id + '/chat' : '';
         const roomCreating = room ? false : this.state.roomCreating;
 
         const {fields : {name}, handleSubmit} = this.props;
 
         return (
-            <div>
+            <div className="room-create-wrap">
                 <h1 className="text-center">Create channel and start messaging</h1>
                 <h2 className="text-center">No registration needed, just username</h2>
-                <div className="channel-form">
+                <div className="channel-form row">
                     <div className="col-xs-12 col-sm-6 col-sm-offset-3">
                         <form className={`${hideForm ? ' hide' : ''}`} onSubmit={handleSubmit(this.onFormSubmit)}>
                             <div className={`form-group ${name.touched && name.error ? ' has-error' : ''}`}>
@@ -53,7 +53,10 @@ class RoomCreatePage extends BaseComponent {
                             </div>
                             <div className="form-group">
                                 <div>
-                                    <button type="submit" className="btn btn-primary col-xs-12">create room</button>
+                                    <button type="submit" disabled={roomCreating}
+                                            className={`btn btn-primary col-xs-12 ${roomCreating ? ' btn-waiting' : ''}`}>
+                                        Create channel
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -68,7 +71,6 @@ class RoomCreatePage extends BaseComponent {
                             </button>
                         </Link>
                     </div>
-                    <span className={roomCreating ? '' : 'hide'}>Room creating</span>
                 </div>
             </div>
         )
@@ -78,9 +80,9 @@ class RoomCreatePage extends BaseComponent {
 
         this.props.createRoom(formData.name);
         this.setState({
-            roomCreating: true,
-            showGoToRoomButton:true,
-            hideForm: true
+            roomCreating: true
+            //showGoToRoomButton:true,
+            //hideForm: true
         });
     }
 }
