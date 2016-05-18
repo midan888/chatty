@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function (props) {
 
-    console.log(props);
-
     if (props.cUser) {
         return (
             <div className="row message-item-container">
