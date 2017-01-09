@@ -12,7 +12,6 @@ import MessageForm from './message_form';
 import MessageList from './message_list.react';
 import BaseComponent from '../base/base_component';
 import RoomNotFound from './room_not_found';
-import DeleteModal from '../base/delete_modal';
 import Loader from '../base/loader';
 import OnlineUsers from './online_users';
 
@@ -84,11 +83,11 @@ class ChatPage extends BaseComponent {
                     <div className="chat-page-header">
                         <div className="row">
                             <div className="col-xs-8">
-                                <h2>Channel: {this.props.chat.roomName}</h2>
+                                <h3>Channel: {this.props.chat.roomName}</h3>
                             </div>
                             <div className="col-xs-4">
                                 <br />
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-sm-6">
                                         <button onClick={this.promptDeleteRoom} className="btn btn-danger btn-xs">Delete channel</button>
                                     </div>
@@ -100,10 +99,7 @@ class ChatPage extends BaseComponent {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <OnlineUsers users={this.props.chat.onlineUsers}/>
-                    <div>
-                        <hr />
+                        <OnlineUsers users={this.props.chat.onlineUsers}/>
                     </div>
                     <MessageList messages={this.props.chat.messages} cUser={this.props.user} />
                     <MessageForm typingUserList={this.props.chat.typingUserList} />

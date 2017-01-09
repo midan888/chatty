@@ -5,7 +5,7 @@ export const GET_PROFILE = 'GET_PROFILE';
 
 export function setNickname(nickname) {
 
-    var request = socketClient.emit('user/setNickname', {
+    let request = socketClient.emit('user/setNickname', {
         nickname: nickname
     });
 
@@ -17,7 +17,7 @@ export function setNickname(nickname) {
 
 export function getProfile() {
 
-    var request = socketClient.emit('user/getProfile');
+    let request = socketClient.emit('user/getProfile');
 
     return {
         type: GET_PROFILE,

@@ -11,7 +11,7 @@ export const DELETE_ROOM = 'DELETE_ROOM';
  */
 export function createRoom(roomName) {
 
-    var request = socketClient.emit('rooms/create', {
+    let request = socketClient.emit('rooms/create', {
         room: {
             name:roomName
         }
@@ -31,7 +31,7 @@ export function createRoom(roomName) {
  */
 export function deleteRoom(roomId) {
 
-    var request = socketClient.emit('rooms/delete', {
+    let request = socketClient.emit('rooms/delete', {
         room: {
             _id:roomId
         }

@@ -11,7 +11,7 @@ export const USER_LEFT_ROOM = 'USER_LEFT_ROOM';
 
 export function createMessage(roomId, message) {
 
-    var request = socketClient.emit('messages/create', {
+    let request = socketClient.emit('messages/create', {
         message: {
             text: message
         },
@@ -26,7 +26,7 @@ export function createMessage(roomId, message) {
 
 export function joinRoom(roomId) {
 
-    var request = socketClient.emit('room/join', {roomId});
+    let request = socketClient.emit('room/join', {roomId});
 
     return {
         type: JOIN_ROOM,
@@ -55,7 +55,7 @@ export function userTyping(roomId) {
 
 export function listenUserTyping() {
 
-    var request = socketClient.listenForever('messages/typing');
+    let request = socketClient.listenForever('messages/typing');
 
     return {
         type: SOME_USER_TYPING,

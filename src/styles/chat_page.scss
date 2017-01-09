@@ -3,16 +3,20 @@
 }
 
 .message-form-container {
-
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px #bbb;
 }
 
 .message-list {
-
+  height: 500px;
+  overflow: scroll;
+  padding: 0 0 50px 0;
 }
 
 .message-item-container {
-    margin-bottom: 10px;
-    padding: 5px;
 
     .text {
         box-shadow: 2px 2px 5px #bbb;

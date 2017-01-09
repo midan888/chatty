@@ -13,8 +13,9 @@ import socketClient from './services/socket/client';
 import reduxPromis from 'redux-promise';
 import { newMessage, userJoinedRoom, userLeftRoom } from './actions/chat_actions';
 import { appOffline, appOnline } from './actions/app_actions';
+import actionLogger from './middlewares/action_logger';
 
-const createStoreWithMiddleware = applyMiddleware(reduxPromis)(createStore);
+const createStoreWithMiddleware = applyMiddleware(actionLogger, reduxPromis)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 const socketConnection = socketClient.connect();

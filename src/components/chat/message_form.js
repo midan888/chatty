@@ -25,7 +25,7 @@ class MessageForm extends BaseComponent {
     render() {
 
         const {fields : {message}, handleSubmit} = this.props;
-        var typingUsers = [];
+        let typingUsers = [];
 
         this.props.typingUserList.forEach(function(nickname){
             typingUsers.push(
@@ -37,10 +37,9 @@ class MessageForm extends BaseComponent {
 
             <div className="message-form-container">
                 <form className="form-horizontal" onSubmit={handleSubmit(this.submitMessage)} autoComplete="off">
-                    <div className="form-group">
+                    <div className="row">
                         <div className="col-xs-10">
-                            <input
-                                type="text"
+                            <textarea
                                 placeholder="hi!"
                                 className="form-control"
                                 {...message}
@@ -49,7 +48,6 @@ class MessageForm extends BaseComponent {
                                     this.props.userTyping(this.props.roomId);
                                 }}
                             />
-
                             <div>{typingUsers}</div>
                         </div>
                         <div className="col-xs-2">
